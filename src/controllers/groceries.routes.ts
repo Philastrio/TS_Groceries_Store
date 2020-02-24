@@ -1,4 +1,6 @@
 import { Router } from "express";
+import { router as itemsRouter } from "./items.routes";
+
 import {
   showAllGroceries,
   createNewGroceries,
@@ -6,6 +8,7 @@ import {
   updateGroceries,
   deleteGroceries
 } from "./groceries.handler";
+
 export const router = Router();
 
 router
@@ -18,3 +21,5 @@ router
   .get(showOneGroceries)
   .put(updateGroceries)
   .delete(deleteGroceries);
+
+router.use("/:id/items", itemsRouter);
